@@ -1,0 +1,138 @@
+<div class="container">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#companyModal">
+    Add Company
+  </button>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Company</th>
+        <th scope="col">Employees</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of organization; let i = index">
+        <td>{{item.name}}</td>
+        <td>{{item.employees.length}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="companyId =  i"
+            data-bs-target="#employeeModal">
+            Add Employee
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="companyId =  i"
+            data-bs-target="#listModal">
+            View Employee
+          </button>
+
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Company</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="email" [(ngModel)]="companyName" class="form-control" id="floatingInput">
+            <label for="floatingInput">Company Name</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCompany()">Save
+            changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="employeeData.first_name" class="form-control" id="floatingInput">
+            <label for="floatingInput">First Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="employeeData.last_name" class="form-control" id="floatingInput">
+            <label for="floatingInput">Last Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="employeeData.role" class="form-control" id="floatingInput">
+            <label for="floatingInput">Role</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" [(ngModel)]="employeeData.address.streetNo" class="form-control" id="floatingInput">
+            <label for="floatingInput">Street No.</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="employeeData.address.address1" class="form-control" id="floatingInput">
+            <label for="floatingInput">Address 1</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="employeeData.address.address2" class="form-control" id="floatingInput">
+            <label for="floatingInput">Address 2</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select [(ngModel)]="employeeData.address.country" class="form-control">
+              <option>NZ</option>
+              <option>UA</option>
+              <option>UK</option>
+            </select>
+            <label for="floatingInput">Country</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEmployee()">Save
+            changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Company Employees</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Country</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of organization[companyId].employees; let i = index">
+                <td>{{item.first_name}} {{item.last_name}}</td>
+                <td>{{item.role}}</td>
+                <td>{{item.address.country}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
