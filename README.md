@@ -1,3 +1,27 @@
+Angular CLI: 19.2.13
+Node: 22.13.1
+Package Manager: npm 10.9.2
+OS: darwin x64
+
+Angular: 19.2.13
+... cli, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1902.13
+@angular-devkit/build-angular   19.2.13
+@angular-devkit/core            19.2.13
+@angular-devkit/schematics      19.2.13
+@schematics/angular             19.2.13
+rxjs                            7.8.2
+typescript                      5.7.3
+zone.js                         0.15.1
+
+
+1. npm install
+2. ng serve
+
 # Assessment
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
